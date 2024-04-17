@@ -10,52 +10,74 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    private let items: [String] = ["Stay", "Walk", "Run", "Bicycle", "Train", "Automobile"]
+    @State private var selected: String?
+    @State private var isStarting: Bool = false
+    @ObservedObject private var motionData = MotionData()
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+        List {
+            Section {
+                ForEach(items, id: \.self) { item in
+                    Button {
+                        selected = item
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text(item)
+                            .foregroundColor(selected == item ? Color(.white) : Color(.blue))
+                    }
+                    .listRowBackground(selected == item ? Color(.blue) : Color(.systemGroupedBackground))
+                }
+            } header: {
+                Text("Collecting Data for ...")
+            }
+            // .headerProminence(.increased)
+
+            Section {
+                Toggle(isOn: self.$isStarting, label: {
+                    Text("Collecting Start")
+                })
+                .onChange(of: self.isStarting) {
+                    if self.isStarting {
+                        self.motionData.start()
+                    } else {
+                        self.motionData.stop()
                     }
                 }
-                .onDelete(perform: deleteItems)
+            } header: {
+                Text("Start")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+            // .headerProminence(.increased)
+
+            Section {
+                VStack {
+                    HStack {
+                        Text("X:")
+                        Spacer()
+                        Text("\(self.motionData.accX)")
                     }
                 }
+                VStack {
+                    HStack {
+                        Text("Y:")
+                        Spacer()
+                        Text("\(self.motionData.accY)")
+                    }
+                }
+                VStack {
+                    HStack {
+                        Text("Z:")
+                        Spacer()
+                        Text("\(self.motionData.accZ)")
+                    }
+                }
+            } header: {
+                Text("Accelerometer")
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+            // .headerProminence(.increased)
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
