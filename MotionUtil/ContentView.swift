@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
     private let items: [String] = ["Stay", "Walk", "Run", "Bicycle", "Train", "Automobile"]
     @State private var selected: String?
     @State private var isStarting: Bool = false
@@ -21,9 +20,10 @@ struct ContentView: View {
                 ForEach(items, id: \.self) { item in
                     Button {
                         selected = item
+                        self.motionData.setActivity(activity: item)
                     } label: {
                         Text(item)
-                            .foregroundColor(selected == item ? Color(.white) : Color(.blue))
+                            .foregroundColor(self.selected == item ? Color(.white) : Color(.blue))
                     }
                     .listRowBackground(selected == item ? Color(.blue) : Color(.systemGroupedBackground))
                 }
