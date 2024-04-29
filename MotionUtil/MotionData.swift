@@ -67,10 +67,11 @@ class MotionData: ObservableObject {
                 self.rotationRateY = data.rotationRate.y
                 self.rotationRateZ = data.rotationRate.z
 
-                let currentTime = Date().timeIntervalSince1970
+                // let currentTime = Date().timeIntervalSince1970
+                let timestamp = data.timestamp
                 self.lock.lock()
                 defer { self.lock.unlock() }
-                self.accDataCsvWriter.writeRowToCsv(rowString: "\(currentTime),\(self.accX),\(self.accY),\(self.accZ),\(self.rotationRateX),\(self.rotationRateY),\(self.rotationRateZ)\r\n")
+                self.accDataCsvWriter.writeRowToCsv(rowString: "\(timestamp),\(self.accX),\(self.accY),\(self.accZ),\(self.rotationRateX),\(self.rotationRateY),\(self.rotationRateZ)\r\n")
             })
         }
     }
