@@ -74,6 +74,33 @@ struct ContentView: View {
                 Text("Accelerometer")
             }
             // .headerProminence(.increased)
+
+            Section {
+                VStack {
+                    HStack {
+                        Text("X:")
+                        Spacer()
+                        Text("\(self.motionData.rotationRateX)")
+                    }
+                }
+                VStack {
+                    HStack {
+                        Text("Y:")
+                        Spacer()
+                        Text("\(self.motionData.rotationRateY)")
+                    }
+                }
+                VStack {
+                    HStack {
+                        Text("Z:")
+                        Spacer()
+                        Text("\(self.motionData.rotationRateZ)")
+                    }
+                }
+            } header: {
+                Text("Gyro")
+            }
+            // .headerProminence(.increased)
         }
     }
 }
