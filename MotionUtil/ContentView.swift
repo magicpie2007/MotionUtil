@@ -6,101 +6,24 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    private let items: [String] = ["Stay", "Walk", "Run", "Bicycle", "Train", "Automobile"]
-    @State private var selected: String?
-    @State private var isStarting: Bool = false
-    @ObservedObject private var motionData = MotionData()
+    @State private var path = [FeatureMenu]()
 
     var body: some View {
-        List {
-            Section {
-                ForEach(items, id: \.self) { item in
-                    Button {
-                        selected = item
-                        self.motionData.setActivity(activity: item)
-                    } label: {
-                        Text(item)
-                            .foregroundColor(self.selected == item ? Color(.white) : Color(.blue))
-                    }
-                    .listRowBackground(selected == item ? Color(.blue) : Color(.systemGroupedBackground))
+        NavigationStack(path: $path) {
+            List {
+                NavigationLink(value: FeatureMenu.feature_collect_activity_data) {
+                    Text("Collect Activity Data")
+                    Spacer()
                 }
-            } header: {
-                Text("Collecting Data for ...")
+                NavigationLink(value: FeatureMenu.feature_predict_activity) {
+                    Text("Predict Activity")
+                    Spacer()
+                }
             }
-            // .headerProminence(.increased)
-
-            Section {
-                Toggle(isOn: self.$isStarting, label: {
-                    Text("Collecting Start")
-                })
-                .onChange(of: self.isStarting) {
-                    if self.isStarting {
-                        self.motionData.start()
-                    } else {
-                        self.motionData.stop()
-                    }
-                }
-            } header: {
-                Text("Start")
-            }
-            // .headerProminence(.increased)
-
-            Section {
-                VStack {
-                    HStack {
-                        Text("X:")
-                        Spacer()
-                        Text("\(self.motionData.accX)")
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Y:")
-                        Spacer()
-                        Text("\(self.motionData.accY)")
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Z:")
-                        Spacer()
-                        Text("\(self.motionData.accZ)")
-                    }
-                }
-            } header: {
-                Text("Accelerometer")
-            }
-            // .headerProminence(.increased)
-
-            Section {
-                VStack {
-                    HStack {
-                        Text("X:")
-                        Spacer()
-                        Text("\(self.motionData.rotationRateX)")
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Y:")
-                        Spacer()
-                        Text("\(self.motionData.rotationRateY)")
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Z:")
-                        Spacer()
-                        Text("\(self.motionData.rotationRateZ)")
-                    }
-                }
-            } header: {
-                Text("Gyro")
-            }
-            // .headerProminence(.increased)
+            .navigationBarTitle("Motion Util")
+            .navigation(path: $path)
         }
     }
 }

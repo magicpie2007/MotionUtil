@@ -13,6 +13,10 @@
 		2E3351F42BCCA23000FA1EB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E3351F32BCCA23000FA1EB5 /* Preview Assets.xcassets */; };
 		2E3351FB2BCD717D00FA1EB5 /* MotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3351FA2BCD717D00FA1EB5 /* MotionData.swift */; };
 		2E3351FD2BD0233B00FA1EB5 /* CsvWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3351FC2BD0233B00FA1EB5 /* CsvWriter.swift */; };
+		2E3352002BE92D6200FA1EB5 /* ActivityDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E3351FF2BE92D6200FA1EB5 /* ActivityDetector.mlmodel */; };
+		2E3352022BEA753500FA1EB5 /* NavigationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3352012BEA753500FA1EB5 /* NavigationModifier.swift */; };
+		2E3352042BEA780F00FA1EB5 /* CollectActivityDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3352032BEA780F00FA1EB5 /* CollectActivityDataView.swift */; };
+		2E3352062BEA787F00FA1EB5 /* PredictActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3352052BEA787F00FA1EB5 /* PredictActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		2E3351FA2BCD717D00FA1EB5 /* MotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionData.swift; sourceTree = "<group>"; };
 		2E3351FC2BD0233B00FA1EB5 /* CsvWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvWriter.swift; sourceTree = "<group>"; };
 		2E3351FE2BD02E1D00FA1EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2E3351FF2BE92D6200FA1EB5 /* ActivityDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ActivityDetector.mlmodel; sourceTree = "<group>"; };
+		2E3352012BEA753500FA1EB5 /* NavigationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModifier.swift; sourceTree = "<group>"; };
+		2E3352032BEA780F00FA1EB5 /* CollectActivityDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectActivityDataView.swift; sourceTree = "<group>"; };
+		2E3352052BEA787F00FA1EB5 /* PredictActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,10 @@
 				2E3351F22BCCA23000FA1EB5 /* Preview Content */,
 				2E3351FA2BCD717D00FA1EB5 /* MotionData.swift */,
 				2E3351FC2BD0233B00FA1EB5 /* CsvWriter.swift */,
+				2E3351FF2BE92D6200FA1EB5 /* ActivityDetector.mlmodel */,
+				2E3352012BEA753500FA1EB5 /* NavigationModifier.swift */,
+				2E3352032BEA780F00FA1EB5 /* CollectActivityDataView.swift */,
+				2E3352052BEA787F00FA1EB5 /* PredictActivityView.swift */,
 			);
 			path = MotionUtil;
 			sourceTree = "<group>";
@@ -149,6 +161,10 @@
 				2E3351EB2BCCA22F00FA1EB5 /* MotionUtilApp.swift in Sources */,
 				2E3351FB2BCD717D00FA1EB5 /* MotionData.swift in Sources */,
 				2E3351FD2BD0233B00FA1EB5 /* CsvWriter.swift in Sources */,
+				2E3352022BEA753500FA1EB5 /* NavigationModifier.swift in Sources */,
+				2E3352042BEA780F00FA1EB5 /* CollectActivityDataView.swift in Sources */,
+				2E3352002BE92D6200FA1EB5 /* ActivityDetector.mlmodel in Sources */,
+				2E3352062BEA787F00FA1EB5 /* PredictActivityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
