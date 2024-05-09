@@ -64,17 +64,13 @@
 		2E3351E92BCCA22F00FA1EB5 /* MotionUtil */ = {
 			isa = PBXGroup;
 			children = (
+				2E3352072BED229700FA1EB5 /* View */,
+				2E3352082BED22CB00FA1EB5 /* Model */,
+				2E3352092BED22F000FA1EB5 /* Util */,
 				2E3351FE2BD02E1D00FA1EB5 /* Info.plist */,
 				2E3351EA2BCCA22F00FA1EB5 /* MotionUtilApp.swift */,
-				2E3351EC2BCCA22F00FA1EB5 /* ContentView.swift */,
 				2E3351F02BCCA23000FA1EB5 /* Assets.xcassets */,
 				2E3351F22BCCA23000FA1EB5 /* Preview Content */,
-				2E3351FA2BCD717D00FA1EB5 /* MotionData.swift */,
-				2E3351FC2BD0233B00FA1EB5 /* CsvWriter.swift */,
-				2E3351FF2BE92D6200FA1EB5 /* ActivityDetector.mlmodel */,
-				2E3352012BEA753500FA1EB5 /* NavigationModifier.swift */,
-				2E3352032BEA780F00FA1EB5 /* CollectActivityDataView.swift */,
-				2E3352052BEA787F00FA1EB5 /* PredictActivityView.swift */,
 			);
 			path = MotionUtil;
 			sourceTree = "<group>";
@@ -85,6 +81,34 @@
 				2E3351F32BCCA23000FA1EB5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2E3352072BED229700FA1EB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E3351EC2BCCA22F00FA1EB5 /* ContentView.swift */,
+				2E3352012BEA753500FA1EB5 /* NavigationModifier.swift */,
+				2E3352032BEA780F00FA1EB5 /* CollectActivityDataView.swift */,
+				2E3352052BEA787F00FA1EB5 /* PredictActivityView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2E3352082BED22CB00FA1EB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2E3351FA2BCD717D00FA1EB5 /* MotionData.swift */,
+				2E3351FF2BE92D6200FA1EB5 /* ActivityDetector.mlmodel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2E3352092BED22F000FA1EB5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2E3351FC2BD0233B00FA1EB5 /* CsvWriter.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
