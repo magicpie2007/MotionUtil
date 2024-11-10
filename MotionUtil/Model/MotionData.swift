@@ -14,6 +14,7 @@ class MotionData: ObservableObject {
     private let logger = Logger(subsystem: "com.hsworks.MotionUtil", category: "MotionData")
     private let lock = NSLock()
     private let motionManager = CMMotionManager()
+    private let motionPrediction = MotionPrediction()
     private let accDataCsvWriter = CsvWriter()
     private let dateFolderName: String
     private var csvStoreFolderName: String = ""
@@ -23,6 +24,7 @@ class MotionData: ObservableObject {
     @Published var rotationRateX: Double = 0.0
     @Published var rotationRateY: Double = 0.0
     @Published var rotationRateZ: Double = 0.0
+    @Published var prediction: String = ""
 
     init() {
         self.logger.info("init() is called")
@@ -41,7 +43,7 @@ class MotionData: ObservableObject {
         createFolderInDocumentDirectory(folderName: self.csvStoreFolderName)
     }
 
-    func start() {
+    func start(enablePrediction: Bool = false) {
         self.logger.info("start() is called")
         self.createCsv()
         if self.motionManager.isAccelerometerAvailable {
@@ -71,6 +73,13 @@ class MotionData: ObservableObject {
                 let timestamp = data.timestamp
                 self.lock.lock()
                 defer { self.lock.unlock() }
+                if enablePrediction {                self.prediction = self.motionPrediction.predict(_accX: self.accX,
+                                                                                                     _accY: self.accY,
+                                                                                                     _accZ: self.accZ,
+                                                                                                     _gyroX: self.rotationRateX,
+                                                                                                     _gyroY: self.rotationRateY,
+                                                                                                     _gyroZ: self.rotationRateZ)
+                }
                 self.accDataCsvWriter.writeRowToCsv(rowString: "\(timestamp),\(self.accX),\(self.accY),\(self.accZ),\(self.rotationRateX),\(self.rotationRateY),\(self.rotationRateZ)\r\n")
             })
         }
